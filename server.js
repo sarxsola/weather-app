@@ -1,7 +1,7 @@
 var PORT = process.env.PORT
 
 const express = require("express");
-const https = require("https");
+const http = require("http");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -24,14 +24,14 @@ app.post("/", function (req, res) {
     }
 
     const url =
-        "https://api.openweathermap.org/data/2.5/weather?q=" +
+        "http://api.openweathermap.org/data/2.5/weather?q=" +
         query +
         "&appid=" +
         apiKey +
         "&units=" +
         units;
 
-    https.get(url, function (response) {
+    http.get(url, function (response) {
         response.on("data", function (data) {
             const weatherData = JSON.parse(data);
             console.log(weatherData);
