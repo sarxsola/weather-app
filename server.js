@@ -1,4 +1,4 @@
-var PORT = process.env.PORT || 3000
+var PORT = process.env.PORT
 
 const express = require("express");
 const https = require("https");
