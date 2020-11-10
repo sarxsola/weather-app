@@ -20,7 +20,6 @@ app.post("/", function (req, res) {
     if (req.body.imperial === "on") {
         units = "imperial";
         typeOfDegree = "Fahrenheit";
-    } else {
     }
 
     const url =
@@ -34,7 +33,8 @@ app.post("/", function (req, res) {
     http.get(url, function (response) {
         response.on("data", function (data) {
             const weatherData = JSON.parse(data);
-            console.log(weatherData);
+
+            if(weatherData.main.temp) {
 
             const temp = weatherData.main.temp;
             const weatherDescription = weatherData.weather[0].description;
@@ -54,6 +54,12 @@ app.post("/", function (req, res) {
                 "</h1>"
             );
             res.write("<img src=" + iconLink + ">");
+
+            
+            }
+            else {
+                res.write("City was not found")
+            }
 
             res.send();
         });
