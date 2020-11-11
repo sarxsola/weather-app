@@ -14,7 +14,7 @@ app.get("/", function (req, res) {
 
 app.post("/", function (req, res) {
     const query = req.body.cityName;
-    const apiKey = "f9aabfff9675996de83cc18baa942651";
+    const apiKey = //API KEY GOES HERE ;
     var units = "metric";
     var typeOfDegree = "Celcius";
     if (req.body.imperial === "on") {
